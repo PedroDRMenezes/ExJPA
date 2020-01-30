@@ -1,0 +1,78 @@
+package br.com.PedroDRM.Alunos.model;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@Entity
+@Table(name = "Cursos")
+public class Curso {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private int id;
+
+	@Column(name = "curso")
+	private String curso;
+
+	@Column(name = "area")
+	private String area;
+
+	@Column(name = "cargaHr")
+	private String cargaHr;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "curso")
+	@JsonIgnoreProperties("curso")
+	private List<Alunos> aluno;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public List<Alunos> getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(List<Alunos> aluno) {
+		this.aluno = aluno;
+	}
+
+	public String getCurso() {
+		return curso;
+	}
+
+	public void setCurso(String curso) {
+		this.curso = curso;
+	}
+
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+
+	public String getCargaHr() {
+		return cargaHr;
+	}
+
+	public void setCargaHr(String cargaHr) {
+		this.cargaHr = cargaHr;
+	}
+
+}

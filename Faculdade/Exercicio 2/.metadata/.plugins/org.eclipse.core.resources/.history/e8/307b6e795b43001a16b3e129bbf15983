@@ -1,0 +1,12 @@
+package br.com.PedroDRM.Alunos.model;
+
+@Entity
+@Table(name="tbldepartamento")
+public class Alunos {
+	
+	private int ra;
+	private String nome;
+	private String email;
+	private String dataNasc;
+	
+}
